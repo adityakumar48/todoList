@@ -9,19 +9,38 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [addTask, setTask] = useState([]);
   
+  //getting the user input 
   function captureInput(e) {
     setUserInput(e.target.value)
   }
+
+
+  //adding task to the list 
   function addTaskToList() {
     if (!userInput) {
       return 
     } else {
-      setTask([...addTask, userInput]);
+      const currentDate = new Date().getTime().toString();
+      const listData = {
+        id: currentDate,
+        task:userInput
+      }
+      console.log(listData)
+      setTask([...addTask, listData]);
       setUserInput('');
     }
 
   }
 
+  // deleting the item form the list 
+  function deleteList(listid) {
+   
+    let filteredItem = addTask.filter((currentElement) => {
+      return listid !== currentElement.id
+    })
+    setTask(filteredItem)
+  
+  }
 
   return (
 
@@ -34,13 +53,12 @@ function App() {
           <ul>
             {addTask.map((currentElement,index) => {
             return <>
-
-              <li><div className='user-task'> <span className='serial-num'>{index +1 }</span>{currentElement}</div>
+              <li key={index}><div className='user-task'> <span className='serial-num'>{index +1 }</span>{currentElement.task}</div>
                 <span>
                   <button className=' btn edit-btn' >
                     <i class="fa-solid fa-pen-to-square"></i>
                   </button>
-                  <button className=" btn delete-btn">
+                  <button onClick={() => { deleteList(currentElement.id) }} className=" btn delete-btn">
                     <i class="fa-solid fa-trash"></i>
                   </button>
                 </span>
