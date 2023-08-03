@@ -73,6 +73,8 @@ input:focus{
 li{
   background-color: beige;
   color: black;
+  margin-top: 9px;
+  text-transform: capitalize;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,7 +83,11 @@ li{
   border: 1px solid black;
 }
 .user-task{
+  text-transform: capitalize;
   font-size: 1rem;
   color: black;
   padding: 0px 20px;
+}
+.serial-num{
+  margin-right: 5px;
 }
