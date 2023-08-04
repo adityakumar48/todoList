@@ -1,10 +1,10 @@
-*{
+* {
   padding: 0;
   margin: 0;
-
 }
-html,body{
-color: rgb(0, 0, 0);
+html,
+body {
+  color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,64 +13,72 @@ color: rgb(0, 0, 0);
   background-color: rgb(180, 204, 219);
 }
 
-.main-container{
+.main-container {
   padding: 5px;
   height: 80vh;
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(55, 55, 55);
   width: 30vw;
   border-radius: 10px;
-  margin: auto; 
+  margin: auto;
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;
   grid-template-rows: 0.2fr 0.3fr 2fr;
   text-align: center;
 }
-.heading{
+.heading {
   /* background-color: rgb(193, 173, 211); */
+
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  text-transform: capitalize;
+  border-bottom: 1px solid rgb(55, 55, 55);
+  padding: 15px 0;
   text-align: center;
 }
 
-.input-box{
+.input-box {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 20px;
 }
-.input-box input{
+.input-box input {
   margin-right: 10px;
   width: 90%;
   height: 50%;
 }
-input{
+input {
   padding: 5px;
   font-size: 1rem;
 }
-input:focus{
+input:focus {
   border: none;
   background-color: rgb(208, 208, 208);
   color: rgb(0, 0, 0);
 }
 
-.btn{
-  width: 35px;
-  height: 35px;
+.btn {
+  width: 30px;
+  height: 30px;
   background-color: black;
   color: rgb(255, 255, 255);
   transition: 0.4s ease;
+  border-radius: 8px;
   border: none;
   margin: 0px 5px;
 }
-.btn:hover{
+.btn:hover {
   background-color: white;
   color: black;
   border: 0.5px solid black;
   border-radius: 50%;
-  
 }
 
-li{
+li {
   background-color: beige;
   color: black;
   margin-top: 9px;
@@ -78,16 +86,19 @@ li{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0px 20px; */
   height: 40px;
   border: 1px solid black;
 }
-.user-task{
+.user-task {
   text-transform: capitalize;
   font-size: 1rem;
   color: black;
   padding: 0px 20px;
 }
-.serial-num{
+.serial-num {
   margin-right: 5px;
+}
+ul {
+  height: 100%;
+  padding: 10px 20px;
 }
