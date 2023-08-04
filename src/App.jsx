@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import List from "./List";
@@ -22,6 +21,7 @@ function App() {
   const Failnotify = () => toast.warning("Please enter a task", toastOptions);
 
   const [userInput, setUserInput] = useState("");
+
   const [addTask, setTask] = useState([]);
 
   //getting the user input
@@ -33,7 +33,7 @@ function App() {
   function addTaskToList() {
     if (!userInput) {
       Failnotify();
-      // alert("Please enter a task");
+
     } else {
       const currentDate = new Date().getTime().toString();
       const listData = {
@@ -78,6 +78,7 @@ function App() {
                 </>
               );
             })}
+
           </ul>
         </div>
       </div>
