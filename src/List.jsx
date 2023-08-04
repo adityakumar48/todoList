@@ -1,7 +1,10 @@
 import React from "react";
 import "./App.css";
 
-// deleting the item form the list
+const List = ({ currentElement, index, addTask, setTask, deleteNotify }) => {
+
+  
+// deleting the item from the list
 function deleteList(listid, addTask, setTask, deleteNotify) {
   let filteredItem = addTask.filter((currentElement) => {
     return listid !== currentElement.id;
@@ -10,7 +13,20 @@ function deleteList(listid, addTask, setTask, deleteNotify) {
   deleteNotify();
 }
 
-const List = ({ currentElement, index, addTask, setTask, deleteNotify }) => {
+
+//edit functionality 
+
+function editListItem(id) {
+  
+  let filteredList = addTask.filter((currEle) => {
+    return id !== currEle;
+  })
+  console.log(filteredList.task)
+
+}
+
+
+
   return (
     <>
       <li key={index}>
@@ -20,7 +36,7 @@ const List = ({ currentElement, index, addTask, setTask, deleteNotify }) => {
           {currentElement.task}
         </div>
         <span>
-          <button className=" btn edit-btn">
+          <button onClick={()=> editListItem(currentElement.id)} className=" btn edit-btn">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button

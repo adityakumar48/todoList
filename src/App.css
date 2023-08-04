@@ -8,19 +8,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
   background-color: rgb(180, 204, 219);
 }
 
 .main-container {
   padding: 5px;
-  height: 80vh;
+  height: max-content;
+  min-height: 80vh;
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(55, 55, 55);
   width: 30vw;
   border-radius: 10px;
-  margin: auto;
+  margin: 20px auto;
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;

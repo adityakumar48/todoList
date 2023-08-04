@@ -7,7 +7,7 @@ import List from "./List";
 function App() {
   const toastOptions = {
     position: "top-right",
-    autoClose: 4000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
