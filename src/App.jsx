@@ -20,9 +20,6 @@ function App() {
     toast.info("Task Delete Successfully", toastOptions);
   const Failnotify = () => toast.warning("Please enter a task", toastOptions);
 
-
-
-
   const [userInput, setUserInput] = useState("");
 
   const [addTask, setTask] = useState([]);
@@ -30,7 +27,6 @@ function App() {
   const [editTask, setEditTask] = useState('');
 
   const [activeEditBtn, setActiveEditBtn] = useState(false)
-
 
 
   //getting the user input
@@ -42,6 +38,15 @@ function App() {
   function addTaskToList() {
     if (!userInput) {
       Failnotify();
+    } else if (userInput && activeEditBtn) {
+      addTask.map((ele) => {
+        if (ele.id === editTask) {
+          return { ... ele, task: userInput };
+        } else {
+          return ele;
+        }
+      })
+
     } else {
       const currentDate = new Date().getTime().toString();
       const listData = {
@@ -68,7 +73,7 @@ function App() {
           />{" "}
           <button className="addItem-btn btn" onClick={addTaskToList}>
             {
-              activeEditBtn ? (<i class="fa-solid fa-pen-to-square"></i> ):( <i class="fa-solid fa-plus"></i>) 
+              activeEditBtn ? (<i class="fa-solid fa-pen-to-square"></i>) : (<i class="fa-solid fa-plus"></i>)
             }
           </button>
         </div>

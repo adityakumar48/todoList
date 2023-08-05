@@ -6,31 +6,26 @@ const List = ({ currentElement, index, addTask, setTask, deleteNotify, setUserIn
 
 
 
-// deleting the item from the list
-function deleteList(listid, addTask, setTask, deleteNotify) {
-  let filteredItem = addTask.filter((currentElement) => {
-    return listid !== currentElement.id;
-  });
-  setTask(filteredItem);
-  deleteNotify();
-}
+  // deleting the item from the list
+  function deleteList(listid, addTask, setTask, deleteNotify) {
+    let filteredItem = addTask.filter((currentElement) => {
+      return listid !== currentElement.id;
+    });
+    setTask(filteredItem);
+    deleteNotify();
+  }
 
 
-//edit functionality 
+  //edit functionality 
 
-  function editListItem(currentElement) { 
-  setActiveEditBtn(true)
-  
+  function editListItem(currentElement) {
+    setActiveEditBtn(true)
+    setUserInput(currentElement.task)
     const editedItem = addTask.find((curEle) => {
-      return curEle.id === currentElement.id 
+      return curEle.id === currentElement.id
     })
-  
-    setEditTask(editedItem)
-
-
-  console.log(editTask)
-
-}
+    setEditTask(editedItem.id)
+  }
 
   return (
     <>
@@ -41,7 +36,7 @@ function deleteList(listid, addTask, setTask, deleteNotify) {
           {currentElement.task}
         </div>
         <span>
-          <button onClick={()=> editListItem(currentElement)} className=" btn edit-btn">
+          <button onClick={() => editListItem(currentElement)} className=" btn edit-btn">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button
