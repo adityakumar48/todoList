@@ -20,9 +20,18 @@ function App() {
     toast.info("Task Delete Successfully", toastOptions);
   const Failnotify = () => toast.warning("Please enter a task", toastOptions);
 
+
+
+
   const [userInput, setUserInput] = useState("");
 
   const [addTask, setTask] = useState([]);
+
+  const [editTask, setEditTask] = useState('');
+
+  const [activeEditBtn, setActiveEditBtn] = useState(false)
+
+
 
   //getting the user input
   function captureInput(e) {
@@ -33,14 +42,12 @@ function App() {
   function addTaskToList() {
     if (!userInput) {
       Failnotify();
-
     } else {
       const currentDate = new Date().getTime().toString();
       const listData = {
         id: currentDate,
         task: userInput,
       };
-      // console.log(listData);
       setTask([...addTask, listData]);
       setUserInput("");
       successNotify();
@@ -60,7 +67,9 @@ function App() {
             value={userInput}
           />{" "}
           <button className="addItem-btn btn" onClick={addTaskToList}>
-            <i class="fa-solid fa-plus"></i>
+            {
+              activeEditBtn ? (<i class="fa-solid fa-pen-to-square"></i> ):( <i class="fa-solid fa-plus"></i>) 
+            }
           </button>
         </div>
         <div className="lists">
@@ -70,10 +79,15 @@ function App() {
                 <>
                   <List
                     currentElement={currentElement}
+                    setUserInput={setUserInput}
                     index={index}
                     addTask={addTask}
                     setTask={setTask}
                     deleteNotify={deleteNotify}
+                    setEditTask={setEditTask}
+                    editTask={editTask}
+                    activeEditBtn={activeEditBtn}
+                    setActiveEditBtn={setActiveEditBtn}
                   />
                 </>
               );

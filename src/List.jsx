@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
-const List = ({ currentElement, index, addTask, setTask, deleteNotify }) => {
+const List = ({ currentElement, index, addTask, setTask, deleteNotify, setUserInput, editTask, setEditTask, setActiveEditBtn, activeEditBtn }) => {
 
-  
+
+
+
 // deleting the item from the list
 function deleteList(listid, addTask, setTask, deleteNotify) {
   let filteredItem = addTask.filter((currentElement) => {
@@ -16,16 +18,19 @@ function deleteList(listid, addTask, setTask, deleteNotify) {
 
 //edit functionality 
 
-function editListItem(id) {
+  function editListItem(currentElement) { 
+  setActiveEditBtn(true)
   
-  let filteredList = addTask.filter((currEle) => {
-    return id !== currEle;
-  })
-  console.log(filteredList.task)
+    const editedItem = addTask.find((curEle) => {
+      return curEle.id === currentElement.id 
+    })
+  
+    setEditTask(editedItem)
+
+
+  console.log(editTask)
 
 }
-
-
 
   return (
     <>
@@ -36,7 +41,7 @@ function editListItem(id) {
           {currentElement.task}
         </div>
         <span>
-          <button onClick={()=> editListItem(currentElement.id)} className=" btn edit-btn">
+          <button onClick={()=> editListItem(currentElement)} className=" btn edit-btn">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button
