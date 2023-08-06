@@ -24,7 +24,7 @@ function App() {
 
   const [addTask, setTask] = useState([]);
 
-  const [editTask, setEditTask] = useState('');
+  const [editTask, setEditTask] = useState("");
 
   const [activeEditBtn, setActiveEditBtn] = useState(false)
 
@@ -39,13 +39,16 @@ function App() {
     if (!userInput) {
       Failnotify();
     } else if (userInput && activeEditBtn) {
-      addTask.map((ele) => {
-        if (ele.id === editTask) {
-          return { ... ele, task: userInput };
+      addTask.map((currentele) => {
+        if (currentele.id === editTask) {
+          return { ...currentele ,task:userInput};
         } else {
-          return ele;
+          return currentele 
         }
       })
+      setUserInput("")
+      setActiveEditBtn(false)
+      successNotify()
 
     } else {
       const currentDate = new Date().getTime().toString();
