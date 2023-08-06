@@ -26,8 +26,7 @@ function App() {
 
   const [editTask, setEditTask] = useState("");
 
-  const [activeEditBtn, setActiveEditBtn] = useState(false)
-
+  const [activeEditBtn, setActiveEditBtn] = useState(false);
 
   //getting the user input
   function captureInput(e) {
@@ -39,17 +38,18 @@ function App() {
     if (!userInput) {
       Failnotify();
     } else if (userInput && activeEditBtn) {
-      addTask.map((currentele) => {
-        if (currentele.id === editTask) {
-          return { ...currentele ,task:userInput};
-        } else {
-          return currentele 
-        }
-      })
-      setUserInput("")
-      setActiveEditBtn(false)
-      successNotify()
-
+      setTask(
+        addTask.map((currentele) => {
+          if (currentele.id === editTask) {
+            return { ...currentele.id, task: userInput };
+          } else {
+            return currentele;
+          }
+        })
+      );
+      setUserInput("");
+      setActiveEditBtn(false);
+      successNotify();
     } else {
       const currentDate = new Date().getTime().toString();
       const listData = {
@@ -75,9 +75,11 @@ function App() {
             value={userInput}
           />{" "}
           <button className="addItem-btn btn" onClick={addTaskToList}>
-            {
-              activeEditBtn ? (<i class="fa-solid fa-pen-to-square"></i>) : (<i class="fa-solid fa-plus"></i>)
-            }
+            {activeEditBtn ? (
+              <i class="fa-solid fa-pen-to-square"></i>
+            ) : (
+              <i class="fa-solid fa-plus"></i>
+            )}
           </button>
         </div>
         <div className="lists">
@@ -100,7 +102,6 @@ function App() {
                 </>
               );
             })}
-
           </ul>
         </div>
       </div>
